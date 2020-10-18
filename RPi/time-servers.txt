@@ -1,0 +1,18 @@
+https://raspberrytips.com/time-sync-raspberry-pi/
+
+
+sudo timedatectl set-ntp false
+sudo timedatectl set-ntp true
+
+sudo nano /etc/systemd/timesyncd.conf
+
+
+
+
+----------------------------------------------------
+https://www.pool.ntp.org/zone/af
+
+server 0.asia.pool.ntp.org
+server 1.asia.pool.ntp.org
+server 2.asia.pool.ntp.org
+server 3.asia.pool.ntp.org

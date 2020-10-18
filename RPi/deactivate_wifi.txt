@@ -1,0 +1,3 @@
+https://raspberrytips.com/disable-wifi-raspberry-pi/
+
+sudo ifconfig wlan0 down
