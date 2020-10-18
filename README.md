@@ -35,6 +35,13 @@ then add the following lines to the end of crontab file:
 ```
 Note: Modify the MQTT topic and client_id in aqm.cfg file accordingly.
 
+To check the incomming MQTT payload:
+
+http://www.hivemq.com/demos/websocket-client/
+Host -> broker.hivemq.com
+Port -> 8000
+Subscriptions -> Add New Topic Subscription -> <topic name>
+topic name example: "aqm/kabul/station09"
 --------------------------------------------------------------------------------
 
 for setting up a remoteiot.com new device:
@@ -49,4 +56,3 @@ Most likely there's already an open SSH session to the RPi for pasting and execu
 Note: Java 11, 10 & 9 don't work on Pi Zero because of ARMv6 architecture.
 
 --------------------------------------------------------------------------------
-
