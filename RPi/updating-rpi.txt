@@ -1,1 +1,12 @@
 https://www.raspberrypi.org/documentation/raspbian/updating.md
+
+https://linoxide.com/linux-how-to/exclude-specific-package-apt-get-upgrade/
+
+https://www.cyberciti.biz/faq/ubuntu-upgrade-update-single-package-using-apt-get/
+https://askubuntu.com/questions/44122/how-to-upgrade-a-single-package-using-apt-get
+
+
+
+--------------------------------------------------------------------------------
+
+https://stackoverflow.com/questions/39127306/cant-resolve-archive-raspberrypi-org-cant-install-anything

@@ -10,8 +10,8 @@ Create an empty file named "ssh" and put in the root folder of "boot" partition 
 
 Setting up the Raspberry Pi for running the python code:
 ```
-sudo apt update
-sudo apt full-upgrade
+sudo apt -o Acquire::ForceIPv4=true update
+sudo apt -o Acquire::ForceIPv4=true full-upgrade
 sudo shutdown -r now
 
 sudo apt install git

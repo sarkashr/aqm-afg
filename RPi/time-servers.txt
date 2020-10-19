@@ -1,12 +1,13 @@
 https://raspberrytips.com/time-sync-raspberry-pi/
 
+timedatectl status
 
 sudo timedatectl set-ntp false
 sudo timedatectl set-ntp true
 
 sudo nano /etc/systemd/timesyncd.conf
 
-
+NTP=0.asia.pool.ntp.org 1.asia.pool.ntp.org 2.asia.pool.ntp.org 3.asia.pool.ntp.org
 
 
 ----------------------------------------------------
