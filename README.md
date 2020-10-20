@@ -10,10 +10,22 @@ Create an empty file named "ssh" and put in the root folder of "boot" partition 
 
 Setting up the Raspberry Pi for running the python code:
 ```
+sudo apt -y update
+sudo apt -y full-upgrade
+```
+or if the above gets stuck then try below
+```
 sudo apt -y -o Acquire::ForceIPv4=true update
 sudo apt -y -o Acquire::ForceIPv4=true full-upgrade
-sudo shutdown -r now
+```
 
+And then reboot
+```
+sudo shutdown -r now
+```
+
+To setup Git and clone the repository
+```
 sudo apt -y install git
 sudo git clone https://github.com/sarkashr/aqm-afg.git
 ```
@@ -37,7 +49,12 @@ Note: Modify the MQTT topic and client_id in aqm.cfg file accordingly.
 ```
 sudo nano /home/pi/aqm-afg/code/aqm.cfg
 ```
+And then the final reboot
+```
+sudo shutdown -r now
+```
 
+--------------------------------------------------------------------------------
 
 To check the incomming MQTT payload:
 ```
@@ -50,7 +67,7 @@ Subscriptions -> Add New Topic Subscription -> <topic name>
 
 --------------------------------------------------------------------------------
 
-for setting up a remoteiot.com new device:
+Setting up a remoteiot.com new device:
 ```
 sudo apt install openjdk-8-jre-headless
 ```
