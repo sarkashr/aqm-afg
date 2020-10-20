@@ -2,9 +2,11 @@
 
 --------------------------------------------------------------------------------
 
-Activating SSH on Raspberry Pi:
+Activating SSH on Raspberry Pi (headless):
 
-Create an empty file named "ssh" and put in the root folder of "boot" partition in the microSD, and NOT in the "rootfs" partition.
+Create an empty file named `ssh` and put it in the root folder of `boot` partition in the microSD, and NOT in the `rootfs` partition.
+
+Can also be activated with `$ sudo raspi-config` if keyboard and display access is available.
 
 --------------------------------------------------------------------------------
 
@@ -13,24 +15,25 @@ Setting up the Raspberry Pi for running the python code:
 sudo apt -y update
 sudo apt -y full-upgrade
 ```
-or if the above gets stuck then try below
+or if the above gets stuck while downloading then try the following:
 ```
 sudo apt -y -o Acquire::ForceIPv4=true update
 sudo apt -y -o Acquire::ForceIPv4=true full-upgrade
 ```
 
-And then reboot
+And then reboot:
 ```
 sudo shutdown -r now
 ```
 
-To setup Git and clone the repository
+To setup Git and clone the repository:
 ```
 sudo apt -y install git
 sudo git clone https://github.com/sarkashr/aqm-afg.git
 ```
 Note: run `sudo git pull` from inside the `aqm-afg` directory to sync with the repository.
 
+To setup PIP and the required Python packages:
 ```
 sudo apt -y install python3-pip
 sudo pip3 install wheel
@@ -45,11 +48,11 @@ then add the following lines to the end of crontab file:
 ```
 @reboot python3 /home/pi/aqm-afg/code/aqm.py &
 ```
-Note: Modify the MQTT topic and client_id in aqm.cfg file accordingly.
+Modify the MQTT topic and client_id in aqm.cfg file accordingly:
 ```
 sudo nano /home/pi/aqm-afg/code/aqm.cfg
 ```
-And then the final reboot
+And then the final reboot to activate the main script:
 ```
 sudo shutdown -r now
 ```
