@@ -10,17 +10,17 @@ Create an empty file named "ssh" and put in the root folder of "boot" partition 
 
 Setting up the Raspberry Pi for running the python code:
 ```
-sudo apt -o Acquire::ForceIPv4=true update
-sudo apt -o Acquire::ForceIPv4=true full-upgrade
+sudo apt -y -o Acquire::ForceIPv4=true update
+sudo apt -y -o Acquire::ForceIPv4=true full-upgrade
 sudo shutdown -r now
 
-sudo apt install git
+sudo apt -y install git
 sudo git clone https://github.com/sarkashr/aqm-afg.git
 ```
 Note: run `sudo git pull` from inside the `aqm-afg` directory to sync with the repository.
 
 ```
-sudo apt install python3-pip
+sudo apt -y install python3-pip
 sudo pip3 install wheel
 sudo pip3 install -r /home/pi/aqm-afg/code/requirements.txt
 ```
@@ -34,14 +34,20 @@ then add the following lines to the end of crontab file:
 @reboot python3 /home/pi/aqm-afg/code/aqm.py &
 ```
 Note: Modify the MQTT topic and client_id in aqm.cfg file accordingly.
+```
+sudo nano /home/pi/aqm-afg/code/aqm.cfg
+```
+
 
 To check the incomming MQTT payload:
-
+```
 http://www.hivemq.com/demos/websocket-client/
 Host -> broker.hivemq.com
 Port -> 8000
 Subscriptions -> Add New Topic Subscription -> <topic name>
-topic name example: "aqm/kabul/station09"
+<topic name> example: "aqm/kabul/station09"
+```
+
 --------------------------------------------------------------------------------
 
 for setting up a remoteiot.com new device:
