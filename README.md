@@ -37,7 +37,7 @@ To setup PIP and the required Python packages:
 ```
 sudo apt -y install python3-pip
 sudo pip3 install wheel
-sudo pip3 install -r /home/pi/aqm-afg/code/requirements.txt
+sudo pip3 install -r /home/pi/aqm-afg/requirements.txt
 ```
 
 Setting up the cron table entries:
@@ -46,11 +46,11 @@ sudo crontab -e
 ```
 then add the following lines to the end of crontab file:
 ```
-@reboot python3 /home/pi/aqm-afg/code/aqm.py &
+@reboot python3 /home/pi/aqm-afg/aqm.py &
 ```
 Modify the MQTT topic and client_id in aqm.cfg file accordingly:
 ```
-sudo nano /home/pi/aqm-afg/code/aqm.cfg
+sudo nano /home/pi/aqm-afg/aqm.cfg
 ```
 And then the final reboot to activate the main script:
 ```

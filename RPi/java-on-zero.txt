@@ -1,8 +1,0 @@
-https://raspberrypi.stackexchange.com/questions/104203/unable-to-run-java-on-raspberry-pi-zero-vm-is-only-supported-on-armv7-vfp
-
-https://raspberrypi.stackexchange.com/questions/93821/java-11-not-working
-
-
-sudo apt -y install openjdk-8-jre-headless
-
-Note: Java 11, 10 & 9 don't work on Pi Zero because of ARMv6 architecture.
