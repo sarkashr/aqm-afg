@@ -46,7 +46,7 @@ sudo crontab -e
 ```
 then add the following lines to the end of crontab file:
 ```
-@reboot python3 /home/pi/aqm-afg/aqm.py &
+*/5 * * * * python3 /home/pi/aqm-afg/sensor_read_and_publish.py
 ```
 Modify the MQTT topic and client_id in aqm.cfg file accordingly:
 ```
