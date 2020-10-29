@@ -1,8 +1,8 @@
-# aqm-afg
+##Air Quality Monitor - minimum code for Afghanistan
 
 --------------------------------------------------------------------------------
 
-Activating SSH on Raspberry Pi (headless):
+###Activating SSH on Raspberry Pi (headless):
 
 Create an empty file named `ssh` and put it in the root folder of `boot` partition in the microSD, and NOT in the `rootfs` partition.
 
@@ -10,56 +10,78 @@ Can also be activated with `$ sudo raspi-config` if keyboard and display access 
 
 --------------------------------------------------------------------------------
 
-Setting up the Raspberry Pi for running the python code:
+###Updating the Raspberry Pi:
+#####current mobile traffic is 90MB per day; therefore the divided download
 ```
 sudo apt -y update
+sudo apt list --upgradable
+sudo apt-mark hold <package_name>
+sudo apt -y full-upgrade --download-only
+sudo apt-mark unhold <package_name>
+
+< Next Day >
+sudo apt -y full-upgrade --download-only
 sudo apt -y full-upgrade
 ```
-or if the above gets stuck while downloading then try the following:
+
+####or if the above gets stuck while downloading then try the following:
 ```
 sudo apt -y -o Acquire::ForceIPv4=true update
+sudo apt list --upgradable
+sudo apt-mark hold raspberrypi-kernel
+sudo apt -y -o Acquire::ForceIPv4=true full-upgrade --download-only
+sudo apt-mark unhold raspberrypi-kernel
+
+< Next Day >
+sudo apt -y -o Acquire::ForceIPv4=true full-upgrade --download-only
 sudo apt -y -o Acquire::ForceIPv4=true full-upgrade
 ```
 
-And then reboot:
+####And then reboot:
 ```
 sudo shutdown -r now
+sudo reboot now
 ```
 
-To setup Git and clone the repository:
+--------------------------------------------------------------------------------
+
+###Setting up the Raspberry Pi for running the python code:
+
+####To setup Git and clone the repository:
 ```
 sudo apt -y install git
 sudo git clone https://github.com/sarkashr/aqm-afg.git
 ```
 Note: run `sudo git pull` from inside the `aqm-afg` directory to sync with the repository.
 
-To setup PIP and the required Python packages:
+####To setup PIP and the required Python packages:
 ```
 sudo apt -y install python3-pip
 sudo pip3 install wheel
 sudo pip3 install -r /home/pi/aqm-afg/requirements.txt
 ```
 
-Setting up the cron table entries:
+####Setting up the cron table entries:
 ```
 sudo crontab -e
 ```
-then add the following lines to the end of crontab file:
+then add the following lines to the crontab file:
 ```
 */5 * * * * python3 /home/pi/aqm-afg/sensor_read_and_publish.py
 ```
-Modify the MQTT topic and client_id in aqm.cfg file accordingly:
+####Modify the MQTT topic and client_id in aqm.cfg file accordingly:
 ```
 sudo nano /home/pi/aqm-afg/aqm.cfg
 ```
-And then the final reboot to activate the main script:
+####And then the final reboot to activate the main script:
 ```
 sudo shutdown -r now
+sudo reboot now
 ```
 
 --------------------------------------------------------------------------------
 
-To check the incomming MQTT payload:
+###To check the incomming MQTT payload:
 ```
 http://www.hivemq.com/demos/websocket-client/
 Host -> broker.hivemq.com
@@ -70,7 +92,7 @@ Subscriptions -> Add New Topic Subscription -> <topic name>
 
 --------------------------------------------------------------------------------
 
-Setting up a remoteiot.com new device:
+###Setting up a remoteiot.com new device:
 ```
 sudo apt install openjdk-8-jre-headless
 ```
