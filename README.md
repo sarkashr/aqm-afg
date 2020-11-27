@@ -88,7 +88,7 @@ sudo reboot now
 http://www.hivemq.com/demos/websocket-client/
 Host -> broker.hivemq.com
 Port -> 8000
-Subscriptions -> Add New Topic Subscription -> <topic name>
+Subscriptions -> Add New Topic Subscription -> <topic_name>
 <topic name> example: "aqm/kabul/station09"
 ```
 

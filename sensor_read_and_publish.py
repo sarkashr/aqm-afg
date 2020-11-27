@@ -12,7 +12,7 @@ config = configparser.ConfigParser()
 config.read(os.path.join(basedir, 'aqm.cfg'))
 device_path = config['SDS011']['device_path'] # $ dmesg | grep tty
 dictionary = {}
-warmuptime = 55 # Should be 60 seconds to get qualified values
+warmup_time = config['SDS011']['warmup_time'] # Should be 60 seconds to get qualified values
 try:
     print('Initialising...')
     sensor = SDS011(device_path, use_query_mode=True)
@@ -20,8 +20,8 @@ try:
     sensor.set_report_mode(read=False, active=False)
     print('Turning on fan and diode in case in sleep mode...')
     sensor.sleep(sleep=False)  # Turn on fan and diode in case in sleep mode
-    print('The sensor is warming-up during the next '+str(warmuptime)+' seconds!')
-    time.sleep(warmuptime)  # Should be 60 seconds to get qualified values
+    print('The sensor is warming-up during the next '+str(warmup_time)+' seconds!')
+    time.sleep(warmup_time)  # Should be 60 seconds to get qualified values
     while True:
         values = sensor.query()
         if values is not None:
