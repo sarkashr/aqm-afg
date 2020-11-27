@@ -12,7 +12,7 @@ config = configparser.ConfigParser()
 config.read(os.path.join(basedir, 'aqm.cfg'))
 device_path = config['SDS011']['device_path'] # $ dmesg | grep tty
 dictionary = {}
-warmup_time = config['SDS011']['warmup_time'] # Should be 60 seconds to get qualified values
+warmup_time = int(config['SDS011']['warmup_time']) # Should be 60 seconds to get qualified values
 try:
     print('Initialising...')
     sensor = SDS011(device_path, use_query_mode=True)
