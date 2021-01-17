@@ -71,6 +71,8 @@ then add the following lines to the crontab file:
 ```
 */5 * * * * python3 /home/pi/aqm-afg/sensor_read_and_publish.py
 ```
+Note: 0-59/5 and */5 are the same; by changing the Zero an offset can be added
+
 #### Modify the MQTT topic and client_id in aqm.cfg file accordingly:
 ```
 sudo nano /home/pi/aqm-afg/aqm.cfg
@@ -104,5 +106,26 @@ After filling the fields, copy the command line code and execute it with `sudo` 
 Most likely there's already an open SSH session to the RPi for pasting and executing the above copied command.
 
 Note: Java 11, 10 & 9 don't work on Pi Zero because of ARMv6 architecture.
+
+--------------------------------------------------------------------------------
+
+For activating SIM7600 module:
+```
+sudo apt install libqmi-utils udhcpc
+```
+Then adding the following lines in the crontab just before the main script line:
+(Yes, both lines are the same! Seems to connect when run twice)
+```
+@reboot python3 /home/pi/air-quality-monitor/code/sim7600_connect.py
+@reboot python3 /home/pi/air-quality-monitor/code/sim7600_connect.py
+```
+
+Note: Modify the APN in the aqm.cfg accordingly. The format can be any ONE of the followings:
+```
+apn = "apn=YOUR_APN,ip-type=4"
+apn = "apn='YOUR_APN',ip-type=4"
+apn = "apn=YOUR_APN,username=YOUR_USERNAME,password=YOUR_PASSWORD,ip-type=4"
+apn = "apn='YOUR_APN',username='YOUR_USERNAME',password='YOUR_PASSWORD',ip-type=4"
+```
 
 --------------------------------------------------------------------------------
