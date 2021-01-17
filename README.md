@@ -116,8 +116,8 @@ sudo apt install libqmi-utils udhcpc
 Then adding the following lines in the crontab just before the main script line:
 (Yes, both lines are the same! Seems to connect when run twice)
 ```
-@reboot python3 /home/pi/air-quality-monitor/code/sim7600_connect.py
-@reboot python3 /home/pi/air-quality-monitor/code/sim7600_connect.py
+@reboot python3 /home/pi/aqm-afg/sim7600_connect.py
+@reboot python3 /home/pi/aqm-afg/sim7600_connect.py
 ```
 
 Note: Modify the APN in the aqm.cfg accordingly. The format can be any ONE of the followings:
